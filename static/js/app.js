@@ -1,22 +1,44 @@
 // Part 1:  Horizontal Bar Chart
-
-// Step:  Read in JSON Data.
-
+//  Step:  Read in JSON Data.
 //  lol spent an hour trying to troubleshoot this only to recall I needed to 
 //  host it locally via python.
-
-// Fetch the JSON data and console log it
+//  Fetch the JSON data and console log it
 
 const url = "../data/samples.json";
 
+// Promise Status
+const dataPromise = d3.json(url);
+console.log("Data Promise: ", dataPromise);
+
 d3.json(url).then(function(data) {
     console.log(data)
+    d3.select("#selDataset").selectAll("option")
+    .data(data.names)
+    .enter()
+    .append("option")
+    .text((element) => `${element}`);
   });
 
+var bar_data = data.samples.sample_values
+
+var trace1 = {
+  x: 
+  y: 
+  type: "bar"
+};
+
+var data = [trace1];
+
+var layout = {
+  title: "OTU Quantity",
+  xaxis: { title: "Quantity"},
+  yaxis: { title: "OTU Types"}
+};
+
+Plotly.newPlot("plot", data, layout);
   
-  // Promise Status
-  const dataPromise = d3.json(url);
-  console.log("Data Promise: ", dataPromise);
+
+
 
 // ============= Exercise Theoretical Solution Workflow ============= \\
 
