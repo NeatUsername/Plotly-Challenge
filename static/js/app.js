@@ -4,26 +4,35 @@
 //  host it locally via python.
 //  Fetch the JSON data and console log it
 
-const url = "../data/samples.json";
+/*  This portion is a QA Step, will not run in final code. */
+// //  Reading in our data source to inspect our data..
+// const url = "../data/samples.json";
+// //  Promise Status:  Console log will confirm success of transaction.
+// const dataPromise = d3.json(url);
+// console.log("Data Promise: ", dataPromise);
 
-// Promise Status
-const dataPromise = d3.json(url);
-console.log("Data Promise: ", dataPromise);
-
+/*  Use D3 to read in our data and console log it for reference. Then use D3 to select
+    the node that corresponds with selection drop-down, and inject (append) our subject
+    IDs contained in our JSON dat file which we previously identifed to be stored at
+    data.names .*/ 
 d3.json(url).then(function(data) {
     console.log(data)
     d3.select("#selDataset").selectAll("option")
     .data(data.names)
     .enter()
     .append("option")
-    .text((element) => `${element}`);
+    .text((element) => `${element}`);  /* Ask Philip to clarify this fat arrow function's role.
+                                          This must be where we're passing the text value of
+                                          our parsed data element to the html, but I wnat to 
+                                          better understand the mechanics behind why this works */
   });
 
-var bar_data = data.samples.sample_values
+var bar_data = data.samples.sample_values;
+var otu_ids = data.samples.otu_ids;
 
 var trace1 = {
-  x: 
-  y: 
+  x: otu_ids,
+  y: bar_data,
   type: "bar"
 };
 
