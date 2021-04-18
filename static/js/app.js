@@ -5,11 +5,11 @@
 //  Fetch the JSON data and console log it
 
 /*  This portion is a QA Step, will not run in final code. */
-// //  Reading in our data source to inspect our data..
-// const url = "../data/samples.json";
-// //  Promise Status:  Console log will confirm success of transaction.
-// const dataPromise = d3.json(url);
-// console.log("Data Promise: ", dataPromise);
+//  Reading in our data source to inspect our data..
+const url = "../data/samples.json";
+//  Promise Status:  Console log will confirm success of transaction.
+const dataPromise = d3.json(url);
+console.log("Data Promise: ", dataPromise);
 
 /*  Use D3 to read in our data and console log it for reference. Then use D3 to select
     the node that corresponds with selection drop-down, and inject (append) our subject
@@ -26,6 +26,13 @@ d3.json(url).then(function(data) {
                                           our parsed data element to the html, but I wnat to 
                                           better understand the mechanics behind why this works */
   });
+
+/*  OK, now that we've prepared our data and have our list populated, we can begin building
+    our graphs and hooking them into the node we've built into our html file. */
+
+/* 1st Graph:  Horizonatal Bar Graph */
+
+
 
 var bar_data = data.samples.sample_values;
 var otu_ids = data.samples.otu_ids;
@@ -44,7 +51,7 @@ var layout = {
   yaxis: { title: "OTU Types"}
 };
 
-Plotly.newPlot("plot", data, layout);
+Plotly.newPlot("bar", data, layout);
   
 
 
