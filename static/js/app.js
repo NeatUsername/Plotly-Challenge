@@ -25,17 +25,15 @@ d3.json(url).then(function(data) {
                                           This must be where we're passing the text value of
                                           our parsed data element to the html, but I wnat to 
                                           better understand the mechanics behind why this works */
-  });
-
-/*  OK, now that we've prepared our data and have our list populated, we can begin building
-    our graphs and hooking them into the node we've built into our html file. */
-
-/* 1st Graph:  Horizonatal Bar Graph */
-
-
 
 var bar_data = data.samples.sample_values;
 var otu_ids = data.samples.otu_ids;
+
+/* From Exercise 2-9:  This is how I'll parse the data from the selected item in our dropdown */
+var dropdownMenu = d3.select("#selDataset");
+// Assign the value of the dropdown menu option to a variable
+var dataset = dropdownMenu.property("value");
+// Initialize an empty array for the country's data
 
 var trace1 = {
   x: otu_ids,
@@ -52,6 +50,17 @@ var layout = {
 };
 
 Plotly.newPlot("bar", data, layout);
+
+});
+
+/*  OK, now that we've prepared our data and have our list populated, we can begin building
+    our graphs and hooking them into the node we've built into our html file. */
+
+/* 1st Graph:  Horizonatal Bar Graph */
+
+
+
+
   
 
 
