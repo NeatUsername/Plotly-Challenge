@@ -26,14 +26,17 @@ d3.json(url).then(function(data) {
                                           our parsed data element to the html, but I wnat to 
                                           better understand the mechanics behind why this works */
 
-var bar_data = data.samples.sample_values;
-var otu_ids = data.samples.otu_ids;
+
 
 /* From Exercise 2-9:  This is how I'll parse the data from the selected item in our dropdown */
 var dropdownMenu = d3.select("#selDataset");
 // Assign the value of the dropdown menu option to a variable
 var dataset = dropdownMenu.property("value");
 // Initialize an empty array for the country's data
+
+var bar_data = data.samples.sample_values;
+var otu_ids = data.samples.otu_ids;
+
 
 var trace1 = {
   x: otu_ids,
